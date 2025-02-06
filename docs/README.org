@@ -1,0 +1,61 @@
+#+title: ChaOS - "Charlie's OS"
+
+* Overview
+
+This is a rudimentary OS meant for as a project submission for the
+CSCE 4326 - OS class.
+
+* Team
+
+Charlie Suarez is the sole author of this project.
+
+* How to Build
+
+Required programs to build:
+- Compiler
+  - GCC/Clang for Linux/macOS
+  - MSVC for Windows
+- CMake
+- Ninja (if on Linux)
+
+The usual CMake commands will build the project:
+
+#+begin_src bash
+mkdir build && cd build
+cmake ..
+cmake --build . --parallel
+#+end_src
+
+* How to Run
+
+Required programs to run:
+- Qemu
+
+
+To boot the operating system:
+
+#+begin_src bash
+# For Linux/macOS:
+./scripts/run.sh
+#+end_src
+
+#+begin_src powershell
+# For Windows:
+./scripts/run.ps1
+#+end_src
+
+* How to Use
+
+The OS will start with a boot message.
+
+Then, it will prompt the user for a username and password. The
+hardcoded username is "root" and the password is "toor".
+
+The user will be given three attempts. If all three attempts are
+exhausted, the OS will shut down.
+
+Once authenticated, a command prompt will be initiated.
+
+The following commands have been initiated:
+- Help
+- 
