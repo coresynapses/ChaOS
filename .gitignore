@@ -1,0 +1,16 @@
+*
+
+!.gitignore
+!CMakeLists.txt
+
+!docs/
+![a-zA-Z]+.org
+
+!src/
+![a-zA-Z]+.cc
+![a-zA-Z]+.hh
+![a-zA-Z]+.S
+
+!scripts/
+!scripts/run.sh
+!scripts/run.ps1
