@@ -22,9 +22,9 @@ bool authenticateUser()
       tries--;
 
       if (!tries) {
-	// If the user has no tries, then shut down the OS.
+	// If the user has no tries, abort authentication.
 
-	std::fprintf(stderr, "\nAuthentication failed. No tries left.\n\nShutting down.\n\n");
+	std::fprintf(stderr, "\nAuthentication failed. No tries left.\n");
 	return false;
 
       } else {
@@ -40,4 +40,6 @@ bool authenticateUser()
     }
 
   } while (username != "root" || password != "toor");
+
+  return false;
 }

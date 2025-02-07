@@ -5,7 +5,7 @@
 This is a rudimentary OS meant for as a project submission for the
 CSCE 4326 - OS class.
 
-* Team
+* Team Members
 
 Charlie Suarez is the sole author of this project.
 
@@ -27,10 +27,6 @@ cmake --build . --parallel
 #+end_src
 
 * How to Run
-
-Required programs to run:
-- Qemu
-
 
 To boot the operating system:
 
