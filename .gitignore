@@ -4,12 +4,12 @@
 !CMakeLists.txt
 
 !docs/
-![a-zA-Z]+.org
+!*.org
 
 !src/
-![a-zA-Z]+.cc
-![a-zA-Z]+.hh
-![a-zA-Z]+.S
+!*.cc
+!*.hh
+!*.S
 
 !scripts/
 !scripts/run.sh
