@@ -120,4 +120,10 @@ public:
 
   // stop() terminates the proces
   void stop();
+
+  // Returns arrivalTime member
+  std::chrono::time_point<std::chrono::system_clock> getArrivalTime() { return arrivalTime; }
+
+  // Returns turnaroundTime member
+  std::chrono::microseconds getTurnaroundTime() { return turnaroundTime; }
 };
