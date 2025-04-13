@@ -4,6 +4,7 @@
 #include <iostream>
 #include <format>
 #include <memory>
+#include <filesystem>
 
 // Project-specific includes
 #include "auth.hh"
@@ -11,6 +12,7 @@
 #include "process.hh"
 #include "shell.hh"
 #include "example.hh"
+#include "workload.hh"
 
 using namespace std::chrono_literals;
 
@@ -19,10 +21,14 @@ int main(int argc, char** argv)
   // Print the boot up message.
   std::printf("Initiating ChaOS...\n\n");
 
+  std::string workloadFile(argv[1]);
+  Workload w(workloadFile);
+  w.execute();
+  
+  /*
   // Authenticate the user.
   if (authenticateUser()) {
-    // Ignore this block.
-    // This is code for a previous assignment.
+    // This block is for Assignment 3.
     {
       // // If passed, do the following:
       // // Create a process that adds two numbers and give it no IO
@@ -92,8 +98,33 @@ int main(int argc, char** argv)
       sch.outputStatistics();
       sch.clear();
     }
-  } else {
-    // Otherwise, shut down.
-    std::printf("\nShutting down.\n\n");
+
+    // This block is for Assignment 5 - Virtual Memory.
+    {
+      // Check the arguments were given correctly.
+      if (argc != 2) {
+	std::printf("Invalid arguments.\n");
+      } else {
+	// Get the workload argument.
+	std::string workloadFile(argv[1]);
+
+	// Check if the workload exists.
+	if (!std::filesystem::exists(workloadFile) && !std::filesystem::is_regular_file(workloadFile)) {
+	  std::printf("File does not exist.\n");
+	} else {
+	  // Attempt to create the workload.
+	  Workload w(workloadFile);
+	  
+	  // Execute the workload.
+	  w.execute();
+	}
+      }
+    }
   }
+  */
+    
+  std::printf("\nShutting down.\n\n");
+  putchar('\n');
+  putchar('\n');
+  putchar('\n');
 }

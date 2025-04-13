@@ -1,0 +1,13 @@
+2
+p 4 5 6 7
+i
+allocate 4 5000
+allocate 5 3000
+allocate 6 7000
+allocate 7 11000
+write 1 5 5
+write 2 3 3
+write 3 7 7
+read 1 5
+read 2 3
+read 3 7

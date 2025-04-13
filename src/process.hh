@@ -3,14 +3,15 @@
 // C++ Standard Libraries
 #include <cstdlib>
 #include <vector>
+#include <unordered_map>
 #include <memory>
 #include <chrono>
 #include <functional>
 #include <utility>
 
 // Project-Specific Includes
-// #include "uuid.hh"
 #include "code.hh"
+#include "page-table.hh"
 
 
 enum PROCESS_PRIORITY {
@@ -38,7 +39,6 @@ enum PROCESS_IO_PERMISSIONS {
   READ_AND_WRITE = 1 << 3, // A process with read and write permissions
 };
 
-// template<typename Code>
 class Process {
   // The process's UUID
   std::uint64_t pid;
@@ -91,6 +91,9 @@ class Process {
   // Determines the process's waiting state
   bool waiting;
 
+  // Page Table
+  PageTable processMemory;
+
 public:
   // Constructor sets up the process
   Process(Code* c, PROCESS_IO_PERMISSIONS perms);
@@ -116,7 +119,7 @@ public:
 
   // updateRemainingTime() updates the remainingtime member to reflect
   // how much time is left for the process to execute
-  void updateRemainingTime(); 
+  void updateRemainingTime();
 
   // stop() terminates the proces
   void stop();
@@ -126,4 +129,13 @@ public:
 
   // Returns turnaroundTime member
   std::chrono::microseconds getTurnaroundTime() { return turnaroundTime; }
+
+  // Allocate memory
+  void allocate(std::uint64_t size);
+
+  // Read from memory
+  std::uint64_t readMemory(std::vector<std::uint64_t> args);
+
+  // Write to memory
+  void writeMemory(std::vector<std::uint64_t> args);
 };

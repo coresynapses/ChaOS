@@ -80,3 +80,24 @@ void Process::stop() {
   terminationTime = std::chrono::system_clock::now();
   turnaroundTime = std::chrono::duration_cast<std::chrono::microseconds>(terminationTime - arrivalTime);
 }
+
+void Process::allocate(std::uint64_t size) {
+  processMemory.allocate(size);
+}
+
+std::uint64_t Process::readMemory(std::vector<std::uint64_t> args) {
+  if ((ioPermissions & PROCESS_IO_PERMISSIONS::READ) |
+      (ioPermissions & PROCESS_IO_PERMISSIONS::READ_AND_WRITE)) {
+    return processMemory.read(args[0]);
+  } else {
+    return ~0;
+  }
+}
+
+void Process::writeMemory(std::vector<std::uint64_t> args) {
+  if ((ioPermissions & PROCESS_IO_PERMISSIONS::WRITE) |
+      (ioPermissions & PROCESS_IO_PERMISSIONS::READ_AND_WRITE) |
+      (ioPermissions & PROCESS_IO_PERMISSIONS::APPEND)) {
+    processMemory.write(args[0], args[1]);
+  }
+}
